@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pereira Participa — Repositorio PPPC</title>
+    <link rel="icon" href="Logo_Pereira_Participa.jpeg">
+    <style>
+      :root { --bg:#ffffff; --fg:#111827; --muted:#4b5563; --border:#e5e7eb; --link:#1d4ed8; }
+      *{box-sizing:border-box}
+      html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica,Arial}
+      .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 60px}
+      .logo{position:fixed;top:14px;left:14px;width:80px;height:80px;border-radius:12px;object-fit:contain;border:1px solid var(--border);background:#fff;box-shadow:0 4px 18px rgba(0,0,0,.06)}
+      header{padding-left:100px}
+	@media (max-width: 480px) {
+  		.logo{display:none}
+ 		 header{padding-left:20px}
+	}
+      header h1{margin:0 0 6px 0;font-size:28px;letter-spacing:.2px}
+      header p{margin:0;color:var(--muted);font-size:15px;max-width:900px}
+      nav{margin-top:14px}
+      nav a{margin-right:14px;color:var(--link);text-decoration:none}
+      .section{margin-top:36px}
+      .section h2{margin:0 0 12px 0;font-size:20px}
+      .pill{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;font-size:12px;color:var(--muted);margin-top:8px;background:#fff}
+      .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+      .card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:16px;min-height:112px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 1px 0 rgba(0,0,0,0.02) inset, 0 8px 24px rgba(0,0,0,0.06)}
+      .eyebrow{font-size:12px;letter-spacing:.4px;text-transform:uppercase;color:var(--muted)}
+      .title{font-size:16px;margin-top:6px}
+      .links{margin-top:10px;display:flex;gap:10px;flex-wrap:wrap}
+      .btn{display:inline-block;text-decoration:none;border:1px solid var(--border);padding:8px 10px;border-radius:12px;font-size:13px;transition:transform .06s ease,border-color .2s ease, background .2s ease;background:#f9fafb;color:var(--fg)}
+      .btn:hover{transform:translateY(-1px);border-color:#cbd5e1;background:#f3f4f6}
+      .btn.primary{border-color:#ef4444;background:#fee2e2}
+      .note{margin-top:26px;font-size:13px;color:var(--muted);border-top:1px dashed var(--border);padding-top:14px}
+      .err{color:#ef4444}
+    </style>
+  </head>
+  <body>
+    <img src="Logo_Pereira_Participa.jpeg" alt="Pereira Participa" class="logo" />
+    <div class="wrap">
+      <header>
+        <h1>Repositorio de la Política Pública de Participación Ciudadana</h1>
+        <p>Repositorio de documentos para la consulta y revisión.</p>
+        <nav aria-label="Secciones">
+          <a href="#entregables">Documentos entregables</a>
+          <a href="#metodologicos">Documentos metodológicos</a>
+          <a href="#tecnicos">Documentos técnicos</a>
+        </nav>
+      </header>
+
+      <section id="entregables" class="section">
+        <h2>Documentos entregables <span class="pill">Documentos entregables que contienen la PPPC</span></h2>
+        <div id="grid-entregables" class="grid" aria-live="polite"></div>
+      </section>
+
+      <section id="metodologicos" class="section">
+        <h2>Documentos metodológicos <span class="pill">Documentos que contienen elementos metodológicos</span></h2>
+        <div id="grid-metodologicos" class="grid" aria-live="polite"></div>
+      </section>
+
+      <section id="tecnicos" class="section">
+        <h2>Documentos técnicos <span class="pill">Documentos que contienen elementos técnicos y son insumos de entregables</span></h2>
+        <div id="grid-tecnicos" class="grid" aria-live="polite"></div>
+      </section>
+
+      <p id="error" class="note err" role="alert" hidden>Ocurrió un problema cargando los enlaces. Verifica la constante <code>DATA</code> o revisa tu conexión.</p>
+    </div>
+
+    <script>
+      const DATA = {
+        entregables: [
+          { title: "Mapeo de Actores", href: "https://drive.google.com/file/d/1vEEuQktU0xS5tGOMNT8aLaQNXBc1uwGD/view?usp=sharing" },
+          { title: "Problema Público", href: "https://drive.google.com/file/d/1JIPMmK_Yg5laAp0HoiVpFwP4AC8Bgreg/view?usp=sharing" },
+          { title: "White Paper", href: "https://drive.google.com/file/d/1Tkr4QjVwBJmXpqwoxaifXPaBiG8LhLgU/view?usp=sharing" }
+        ],
+        metodologicos: [
+          { title: "Metodología PPPC", href: "https://drive.google.com/file/d/1Dk_j3vDlpJvaO24dVoxG5TPWpJ2cyFbW/view?usp=sharing" },
+          { title: "Guía Encuentros Presenciales", href: "https://drive.google.com/file/d/1KEcikCMvOC4BRgemrYWciUXAzjRvUSuM/view?usp=sharing" },
+          { title: "Guía Diagnostico con APPS", href: "https://drive.google.com/file/d/1-CgWnP76OsKv7mNdNJeLIn2COughMsx-/view?usp=sharing" },
+          { title: "Guía Recolección Rápida Información", href: "https://drive.google.com/file/d/1nbX4snKlQVDJ0uwTcbfaY5BNWd_kB1Tb/view?usp=sharing" },
+          { title: "Guía Instrumento Árbol Pro-Sol", href: "https://1drv.ms/b/c/f0437e1066d439c2/ERBSoHqeScBHgRpNe4YaqaoB6tesJ_L0uFTn-d6wD9SGeg?e=Byrul0" },
+          { title: "Guía Entrevistas Semi Estructuradas", href: "https://drive.google.com/file/d/146GGp9D2VSeX6fvwnK1gCivHeM3mhaql/view?usp=sharing" },
+          { title: "Guía Co-Creación Plan Estratégico", href: "https://drive.google.com/file/d/146GGp9D2VSeX6fvwnK1gCivHeM3mhaql/view?usp=sharing" },
+          { title: "Instrumento Banco de Preguntas", href: "https://drive.google.com/file/d/1BGgv0h5orX4E5mJuoOOBSoso9_fFajxJ/view?usp=sharing" },
+          { title: "Instrumento Encuesta Corta", href: "https://drive.google.com/file/d/1cLT8jzDnLQtIYUw5VQulvReG4Wr3X0GM/view?usp=sharing" },
+          { title: "Instrumento Encuesta Larga", href: "https://drive.google.com/file/d/1GMNiM-NCQA7BM2ijvF-l-vK6GmKcYgHU/view?usp=sharing" },
+          { title: "Instrumento Situación Participación DOFA", href: "https://drive.google.com/file/d/1wBsY7lAq6WJuCwL36ejSoZzBBUUrjdLw/view?usp=sharing" }
+        ],
+        tecnicos: [
+          { title: "Diágnostico Problema Público-Estadisticas", href: "https://drive.google.com/file/d/1AWB8YFvRVAUypQcqjXHkH1rzmTHoa1uy/view?usp=sharing" },
+          { title: "Diagnóstico DOFA", href: "https://drive.google.com/file/d/129YxJKqKphyP9d02Wdi4Ai1q7NvSsxnM/view?usp=sharing" },
+          { title: "Marco Normativo", href: "https://drive.google.com/file/d/1vjT3FAw16AkLHpeb2KhwZ1NSIZdHh8Uv/view?usp=sharing" },
+ 	  { title: "Marco Conceptual", href: "https://drive.google.com/file/d/1fpoiKRn9iLZAbBIFDuc93i-qEQOdOmaH/view?usp=sharing" }
+        ]
+      };
+
+      function esc(s){return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+      function cardTemplate(item, tipo) {
+        const eyebrow = `<div class="eyebrow">${esc(tipo)}</div>`;
+        const title = `<div class="title">${esc(item.title)}</div>`;
+        const primary = `<a class="btn primary" href="${esc(item.href)}" target="_blank" rel="noopener">Abrir documento</a>`;
+        return `<article class="card"><div>${eyebrow}${title}</div><div class="links">${primary}</div></article>`;
+      }
+      function renderSection(containerId, items, tipo) {
+        const el = document.getElementById(containerId);
+        el.innerHTML = (items||[]).map(i => cardTemplate(i, tipo)).join('');
+      }
+      try {
+        renderSection('grid-entregables', DATA.entregables, 'Entregable');
+        renderSection('grid-metodologicos', DATA.metodologicos, 'Metodología');
+        renderSection('grid-tecnicos', DATA.tecnicos, 'Técnico');
+      } catch (e) {
+        document.getElementById('error').hidden = false;
+        console.error(e);
+      }
+    </script>
+  </body>
+</html>
