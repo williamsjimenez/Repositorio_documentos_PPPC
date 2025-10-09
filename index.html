@@ -45,7 +45,7 @@
           <a href="#entregables">Documentos entregables</a>
           <a href="#metodologicos">Documentos metodológicos</a>
           <a href="#tecnicos">Documentos técnicos</a>
-		<a href="#ejecutivos">Documentos ejecutivos</a>
+	  <a href="#ejecutivos">Documentos ejecutivos</a>
         </nav>
       </header>
 
@@ -64,9 +64,9 @@
         <div id="grid-tecnicos" class="grid" aria-live="polite"></div>
       </section>
 
-		<section id="ejecutivos" class="section">
+	<section id="ejecutivos" class="section">
         <h2>Informes ejecutivos <span class="pill">Documentos que contienen informes ejecutivos</span></h2>
-        <div id="grid-tecnicos" class="grid" aria-live="polite"></div>
+        <div id="grid-ejecutivos" class="grid" aria-live="polite"></div>
       </section>
 
       <p id="error" class="note err" role="alert" hidden>Ocurrió un problema cargando los enlaces. Verifica la constante <code>DATA</code> o revisa tu conexión.</p>
@@ -100,9 +100,9 @@
           { title: "Marco Normativo", href: "https://drive.google.com/file/d/1vjT3FAw16AkLHpeb2KhwZ1NSIZdHh8Uv/view?usp=sharing" },
  	      { title: "Marco Conceptual", href: "https://drive.google.com/file/d/1fpoiKRn9iLZAbBIFDuc93i-qEQOdOmaH/view?usp=sharing" }
         ],
-		ejecutivos [
+		ejecutivos: [
           { title: "Informe Ejecutivo", href: "https://drive.google.com/file/d/1GLprcZy-VN1QU9wz2eDk9XP-tHpjURiQ/view?usp=sharing" }
-		  
+	]	  
       };
 
       function esc(s){return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
@@ -120,7 +120,7 @@
         renderSection('grid-entregables', DATA.entregables, 'Entregable');
         renderSection('grid-metodologicos', DATA.metodologicos, 'Metodología');
         renderSection('grid-tecnicos', DATA.tecnicos, 'Técnico');
-		renderSection('grid-ejecutivos', DATA.tecnicos, 'Ejecutivos');  
+	renderSection('grid-ejecutivos', DATA.ejecutivos, 'Ejecutivos');  
       } catch (e) {
         document.getElementById('error').hidden = false;
         console.error(e);
