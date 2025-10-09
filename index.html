@@ -45,6 +45,7 @@
           <a href="#entregables">Documentos entregables</a>
           <a href="#metodologicos">Documentos metodológicos</a>
           <a href="#tecnicos">Documentos técnicos</a>
+		<a href="#ejecutivos">Documentos ejecutivos</a>
         </nav>
       </header>
 
@@ -64,7 +65,7 @@
       </section>
 
 		<section id="ejecutivos" class="section">
-        <h2>Informes ejecutivos <span class="pill">Documentos que contieneninformes ejecutivos</span></h2>
+        <h2>Informes ejecutivos <span class="pill">Documentos que contienen informes ejecutivos</span></h2>
         <div id="grid-tecnicos" class="grid" aria-live="polite"></div>
       </section>
 
@@ -119,6 +120,7 @@
         renderSection('grid-entregables', DATA.entregables, 'Entregable');
         renderSection('grid-metodologicos', DATA.metodologicos, 'Metodología');
         renderSection('grid-tecnicos', DATA.tecnicos, 'Técnico');
+		renderSection('grid-ejecutivos', DATA.tecnicos, 'Ejecutivos');  
       } catch (e) {
         document.getElementById('error').hidden = false;
         console.error(e);
@@ -126,4 +128,5 @@
     </script>
   </body>
 </html>
+
 
